@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     "debug_toolbar",
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
@@ -83,10 +84,21 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'myshop',
+    'USER': 'artem',
+    'PASSWORD': '123',
+# 'HOST': 'localhost',
+# 'PORT': '5432', # default PostgreSQL port
     }
 }
 
