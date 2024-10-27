@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
+    'orders.apps.OrderConfig',
 ]
 
 MIDDLEWARE = [
@@ -96,9 +97,9 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'myshop',
     'USER': 'artem',
-    'PASSWORD': '123',
-# 'HOST': 'localhost',
-# 'PORT': '5432', # default PostgreSQL port
+    'PASSWORD': 'artemsim',
+'HOST': 'localhost',
+'PORT': '5432', # default PostgreSQL port
     }
 }
 
