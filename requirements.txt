@@ -6,3 +6,4 @@ flower==1.2.0
 celery==5.2.7
 django-debug-toolbar==4.4.6
 psycopg2==2.9.9
+celery==5.4.0
