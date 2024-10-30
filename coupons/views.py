@@ -11,7 +11,7 @@ from .forms import CouponApplyForm
 def coupon_apply(request):
     now = timezone.now()
     form = CouponApplyForm(request.POST)
-    if form.is_valid:
+    if form.is_valid():
         code = form.cleaned_data['code']
         try:
             coupon = Coupon.objects.get(code__iexact=code,
