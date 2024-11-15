@@ -7,6 +7,7 @@ from .cart import Cart
 from .forms import CartAddProductForm
 from coupons.forms import CouponApplyForm
 from shop.recommender import Recommender
+from django.contrib.auth.decorators import login_required
 
 @require_POST
 def cart_add(request, product_id):
@@ -28,6 +29,7 @@ def cart_remove(request, product_id):
     cart.remove(product)
     return redirect('cart:cart_detail')
 
+@login_required
 def cart_detail(request):  # отоюражение содержимого корзины
     cart = Cart(request)
     for item in cart:

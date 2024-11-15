@@ -1,0 +1,30 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="login-container">
+        <h2>Вход</h2>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="login-btn">Войти</button>
+        </form>
+    </div>
+    <div class="button-reg">
+        <a href="{% url 'signup' %}">
+            <button type="submit">Registry</button>
+        </a>
+
+    </div>
+    <div class="error">
+        {% if form.errors %}
+            Неверный логин или пароль. Попробуйте снова.
+    </div>
+        {% endif %}
+{% endblock %}

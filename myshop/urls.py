@@ -19,12 +19,20 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from debug_toolbar.toolbar import debug_toolbar_urls
+from account.views import login_view,signup_view,logout_view
+from django.contrib.auth.views import LogoutView
+from django.utils.translation import gettext_lazy as _ 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cart/', include('cart.urls', namespace='cart')),
-    path('orders/', include('orders.urls', namespace='orders')),
-    path('coupons/', include('coupons.urls', namespace='coupons')),
+    path(_('account/'), include('account.urls',namespace='account')),
+    path(_('login/'), login_view,name='login'),
+    path(_('signup/'), signup_view, name = 'signup'),
+    path(_('logout/'), logout_view, name='logout'),
+    path(_('cart/'), include('cart.urls', namespace='cart')),
+    path(_('orders/'), include('orders.urls', namespace='orders')),
+    path(_('coupons/'), include('coupons.urls', namespace='coupons')),
+    path('rosetta/', include("rosetta.urls")),
     path('', include('shop.urls', namespace='shop')),
 ] + debug_toolbar_urls()
 
