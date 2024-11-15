@@ -45,10 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     "debug_toolbar",
+    'account.apps.AccountConfig',
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'coupons.apps.CouponsConfig',
+    'rosetta',
+    'parler',
 ]
 
 MIDDLEWARE = [
@@ -97,11 +100,11 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 
 DATABASES = {
 'default': {
-    'ENGINE': 'django.db.backends.postgresql',
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'myshop',
     'USER': 'artem',
-    'PASSWORD': 'artemsim',
-'HOST': 'localhost',
+    'PASSWORD': '123',
+'HOST': 'pgdb',
 'PORT': '5432', # default PostgreSQL port
     }
 }
@@ -164,6 +167,22 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # настроечные параметры Redis
-REDIS_HOST = 'localhost'
+REDIS_HOST = 'redis'
 REDIS_PORT = 6379
 REDIS_DB = 1 
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'account/logout'
+LOGIN_URL = '/login'
+
+# настройки django-parler
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'es'},
+    ),
+    'default': {
+        'fallback':'en', 
+        'hide_untranslated':False,
+    }
+}
