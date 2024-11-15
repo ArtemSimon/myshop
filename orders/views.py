@@ -5,8 +5,9 @@ from .models import OrderItem
 from .forms import OrderCreateForm
 from cart.cart import Cart
 from .tasks import order_created
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def order_create(request):
     cart = Cart(request)
     if request.method == 'POST':
