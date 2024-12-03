@@ -22,6 +22,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 from account.views import login_view,signup_view,logout_view
 from django.contrib.auth.views import LogoutView
 from django.utils.translation import gettext_lazy as _ 
+from two_factor.urls import urlpatterns as tf_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),

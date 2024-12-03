@@ -45,6 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     "debug_toolbar",
+    'django_otp',
+    'django_otp.plugins.otp_static',
+    'django_otp.plugins.otp_totp',
+    'two_factor',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'account.apps.AccountConfig',
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
@@ -62,9 +68,18 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_otp.middleware.OTPMiddleware'       # Middleware для обработки OTP
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+
+
+
 
 ROOT_URLCONF = 'myshop.urls'
 
@@ -186,3 +201,7 @@ PARLER_LANGUAGES = {
         'hide_untranslated':False,
     }
 }
+
+CELERY_BROKER_URL = 'amqp://admin:123@rabbitmq:5672/'
+# CELERY_BROKER_URL = 'localhost:5672''
+broker_connection_retry_on_startup = 'True'

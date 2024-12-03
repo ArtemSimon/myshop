@@ -34,20 +34,25 @@ services:
       - ./redisdata:/data
     
   rabbitmq:
+    restart: always
     image: rabbitmq:management
     container_name: rabbitmq
-    # enviroment:
-      # - RABBITMQ_DEFAULT_USER = admin
-      # # - RABBITMQ_DEFAULT_PASS = 123
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=123
     ports: 
+      - 5672:5672
       - 15672:15672
 
-  # celery-myshop: 
-  #   image: celery
-  #   container_name: celery
-  #   # command: celery -A myshop worker -l info
-  #   hostname: celery-myshop
-  #   volumes:
-  #     - .:/app
-  #   depends_on:
-  #     - rabbitmq
+  celery: 
+    restart: always
+    build: .
+    container_name: celery
+    command: celery -A myshop worker -l info
+    ports:
+      - 127.0.0.1:5555:5555
+    volumes:
+      - .:/app
+    depends_on:
+      - rabbitmq
+      
