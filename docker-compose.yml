@@ -1,24 +1,25 @@
 version: '3.9'
 
 services:
-  # django:
-  #   build: . 
-  #   container_name: django
-  #   command: python manage.py runserver 0.0.0.0:8000
-  #   volumes: 
-  #     - .:/app
-  #   ports:
-  #     - 8000:8000
-  #   depends_on:
-  #     - pgdb
+  django:
+    build: . 
+    container_name: django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes: 
+      - .:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - pgdb
 
   pgdb:
     image: postgres
+    container_name: pgdb
     environment:
       POSTGRES_DB: myshop
       POSTGRES_USER: artem
       POSTGRES_PASSWORD: 123
-    container_name: pgdb
+      user: 999:999 
     ports:
       - 5433:5432 
     volumes: 
@@ -46,15 +47,15 @@ services:
       - 5672:5672
       - 15672:15672
 
-  celery: 
-    restart: always
-    build: .
-    container_name: celery
-    command: celery -A myshop worker -l info
-    ports:
-      - 127.0.0.1:5555:5555
-    volumes:
-      - .:/app
-    depends_on:
-      - rabbitmq
+  # celery: 
+  #   restart: always
+  #   build: .
+  #   container_name: celery
+  #   command: celery -A myshop worker -l info
+  #   ports:
+  #     - 127.0.0.1:5555:5555
+  #   volumes:
+  #     - .:/app
+  #   depends_on:
+  #     - rabbitmq
       
