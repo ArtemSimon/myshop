@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_static',
     'django_otp.plugins.otp_totp',
     'two_factor',
-    'crispy_forms',
-    'crispy_bootstrap5',
+    # 'crispy_forms',
+    # 'crispy_bootstrap5',
     'account.apps.AccountConfig',
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
@@ -67,9 +67,9 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django_otp.middleware.OTPMiddleware'       # Middleware для обработки OTP
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_otp.middleware.OTPMiddleware',    # Middleware для обработки OTP
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -119,7 +119,8 @@ DATABASES = {
     'NAME': 'myshop',
     'USER': 'artem',
     'PASSWORD': '123',
-'HOST': 'pgdb',
+# 'HOST': 'pgdb',
+'HOST': 'localhost',
 'PORT': '5432', # default PostgreSQL port
     }
 }

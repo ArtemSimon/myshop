@@ -1,26 +1,26 @@
 version: '3.9'
 
 services:
-  django:
-    build: . 
-    container_name: django
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes: 
-      - .:/app
-    ports:
-      - 8000:8000
-    depends_on:
-      - pgdb
+  # django:
+  #   build: . 
+  #   container_name: django
+  #   command: python manage.py runserver 0.0.0.0:8000
+  #   volumes: 
+  #     - .:/app
+  #   ports:
+  #     - 8000:8000
+  #   depends_on:
+  #     - pgdb
 
   pgdb:
     image: postgres
     environment:
-      - POSTGRES_DB=myshop
-      - POSTGRES_USER=artem
-      - POSTGRES_PASSWORD=123
+      POSTGRES_DB: myshop
+      POSTGRES_USER: artem
+      POSTGRES_PASSWORD: 123
     container_name: pgdb
     ports:
-      - 5432:5432 
+      - 5433:5432 
     volumes: 
       - ./pgdata:/var/lib/postgresql/data
     restart: always    
@@ -32,14 +32,16 @@ services:
       - 6379:6379
     volumes:
       - ./redisdata:/data
+    restart : always
+
     
   rabbitmq:
     restart: always
     image: rabbitmq:management
     container_name: rabbitmq
     environment:
-      - RABBITMQ_DEFAULT_USER=admin
-      - RABBITMQ_DEFAULT_PASS=123
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: 123
     ports: 
       - 5672:5672
       - 15672:15672
