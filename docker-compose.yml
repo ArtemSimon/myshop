@@ -19,9 +19,8 @@ services:
       POSTGRES_DB: myshop
       POSTGRES_USER: artem
       POSTGRES_PASSWORD: 123
-      user: 999:999 
     ports:
-      - 5433:5432 
+      - 5432:5432 
     volumes: 
       - ./pgdata:/var/lib/postgresql/data
     restart: always    

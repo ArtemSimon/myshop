@@ -119,15 +119,10 @@ DATABASES = {
     'NAME': 'myshop',
     'USER': 'artem',
     'PASSWORD': '123',
-<<<<<<< HEAD
-'HOST': 'pgdb',
-# 'HOST': 'localhost',
-'PORT': '5432', # default PostgreSQL port
-=======
     # 'HOST': 'pgdb',
     'HOST': 'localhost',
     'PORT': '5432', # default PostgreSQL port
->>>>>>> test
+
     }
 }
 
