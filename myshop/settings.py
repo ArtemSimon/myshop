@@ -168,7 +168,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # настроечные параметры Redis
-REDIS_HOST = 'redis'
+# REDIS_HOST = 'redis'
+REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 1 
 
