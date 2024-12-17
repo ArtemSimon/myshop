@@ -208,3 +208,5 @@ PARLER_LANGUAGES = {
 CELERY_BROKER_URL = 'amqp://admin:123@rabbitmq:5672/'
 # CELERY_BROKER_URL = 'localhost:5672''
 broker_connection_retry_on_startup = 'True'
+
+# AUTH_USER_MODEL = 'account.UserOTP'

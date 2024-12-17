@@ -27,9 +27,9 @@ from two_factor.urls import urlpatterns as tf_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(_('account/'), include('account.urls',namespace='account')),
-    path(_('login/'), login_view,name='login'),
-    path(_('signup/'), signup_view, name = 'signup'),
-    path(_('logout/'), logout_view, name='logout'),
+    # path(_('login/'), login_view,name='login'),
+    # path(_('signup/'), signup_view, name = 'signup'),
+    # path(_('logout/'), logout_view, name='logout'),
     path(_('cart/'), include('cart.urls', namespace='cart')),
     path(_('orders/'), include('orders.urls', namespace='orders')),
     path(_('coupons/'), include('coupons.urls', namespace='coupons')),
