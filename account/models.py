@@ -1,3 +1,24 @@
 from django.db import models
+from django.contrib.auth.models import User,AbstractUser
+import pyotp
+from django.utils import timezone
 
-# Create your models here.
+class UserOTP(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    otp_secret = models.CharField(max_length=32, default=pyotp.random_base32,blank=True)
+    last_login = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.user.username
+    
+    # генерирует код на основе секретного ключа 
+    def generate_otp(self):
+        totp = pyotp.TOTP(self.otp_secret)
+        return totp.now()
+
+    # проверяет его корректность ввода 
+    def verify_otp(self,otp):
+        totp = pyotp.TOTP(self.otp_secret)
+        return totp.verify(otp)
+   
+   

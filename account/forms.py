@@ -12,3 +12,7 @@ class SignUpForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='Имя пользователя')
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+
+class OTPVerificationForm(forms.Form):
+    otp = forms.CharField(max_length=6, required=True,label="enter code")
+    
