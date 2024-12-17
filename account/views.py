@@ -2,9 +2,15 @@
 
 from django.shortcuts import render
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
-from .forms import SignUpForm, LoginForm
+from .forms import SignUpForm, LoginForm, OTPVerificationForm
 from django.contrib.auth.views import LoginView
+from .utils import generate_otp, verify_otp
+from django.core.mail import send_mail
+from .models import UserOTP
+from django.contrib import messages
+
 
 def signup_view(request):
     if request.method == 'POST':
@@ -23,14 +29,53 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(username=username, password=password) # Проверяем учетные данные
-            if user is not None:
-                # login(request, user)     # Выполняем вход
-                request.session['auth_login'] = user
-                return redirect('shop:product_list')  # Перенаправляем на главную страницу
+            user = authenticate(request,username=username, password=password) # Проверяем учетные данные
+
+            if user:
+         
+
+                user_otp = UserOTP.objects.get(user=user)
+                otp = user_otp.generate_otp()
+                send_mail(
+                'Your otp code', 
+                f'Your otp code is {otp}',
+                'artemsim2006@mail.ru',
+                [user.email],
+            )
+                request.session['user_id'] = user.id 
+                return redirect('account:otp_verify')
+            
     return render(request, 'account/login.html', {'form': form})
+
+
+def verify_otp_view(request):
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return redirect('account:login')
+    try:
+        user = User.objects.get(id=user_id)
+        user_otp = UserOTP.objects.get(user=user)
+    
+
+        if request.method == 'POST':
+            form = OTPVerificationForm(request.POST)
+            if form.is_valid():
+                otp = form.cleaned_data['otp']
+                if user_otp.verify_otp(otp):
+                    del  request.session['user_id']
+                    login(request, user)
+                    return redirect('shop:product_list')
+                else: 
+                    messages.error(request,'no valid code ')
+                    return render(request, 'account/otp_verify.html', {'form': form, "error": 'invalid OTP'})
+        else:
+            form = OTPVerificationForm()
+        return render (request,'account/otp_verify.html',{'form': form})
+    
+    except UserOTP.DoesNotExist:
+        messages.error(request, "пользователь не настроил двучфакторную аутентификацию")
+        return redirect('account:login')
 
 def logout_view(request):
     logout(request)
-    # return redirect('account:login')
     return render(request, 'account/logout.html')
