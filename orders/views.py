@@ -26,7 +26,7 @@ def order_create(request):
             # очистить корзину
             cart.clear()
             # запустить асинхронное задание
-            order_created.delay(order.id)
+            order_created(order.id)
             return render(request,
                           'orders/order/created.html',
                           {'order': order})

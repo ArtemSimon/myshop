@@ -46,15 +46,15 @@ services:
       - 5672:5672
       - 15672:15672
 
-  # celery: 
-  #   restart: always
-  #   build: .
-  #   container_name: celery
-  #   command: celery -A myshop worker -l info
-  #   ports:
-  #     - 127.0.0.1:5555:5555
-  #   volumes:
-  #     - .:/app
-  #   depends_on:
-  #     - rabbitmq
+  celery: 
+    restart: always
+    build: .
+    container_name: celery
+    command: celery -A myshop worker -l info
+    ports:
+      - 127.0.0.1:5555:5555
+    volumes:
+      - .:/app
+    depends_on:
+      - rabbitmq
       
