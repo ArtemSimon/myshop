@@ -25,7 +25,7 @@ jobs:
               run: docker build -t artemsim/docker_ci -f Dockerfile .
               
             - name: Push image to docker 
-              run: docker push artemsim/docker_ci:${GITHUB_REF:11}
+              run: docker push artemsim/docker_ci
 
 
                 
