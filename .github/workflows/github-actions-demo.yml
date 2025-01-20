@@ -26,7 +26,7 @@ jobs:
             # Загружает все зависимости с проекта 
             - name: Install dependens
               run: | 
-               python install -r requirements.txt
+               python install -r myshop/requirements.txt
              
 
             #  Выполняется скрипт (но можно сделать другую логику)
