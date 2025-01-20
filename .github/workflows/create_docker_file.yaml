@@ -22,7 +22,7 @@ jobs:
               run: echo artemA28.04 | docker login -u artemsim --password-stdin
 
             - name: Build image
-              run: docker build artemsim/docker_ci -f Dockerfile .
+              run: docker build -t artemsim/docker_ci -f Dockerfile .
               
             - name: Push image to docker 
               run: docker push artemsim/docker_ci:${GITHUB_REF:11}
