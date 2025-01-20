@@ -26,7 +26,8 @@ jobs:
             # Загружает все зависимости с проекта 
             - name: Install dependens
               run: | 
-               python3 install -r projects/myshop/requirements.txt
+                python -m pip install --upgrade pip 
+                pip install -r requirements.txt
              
 
             #  Выполняется скрипт (но можно сделать другую логику)
