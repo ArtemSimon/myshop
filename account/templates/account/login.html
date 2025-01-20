@@ -20,6 +20,15 @@
         <a href="{% url 'account:signup' %}">
             <button type="submit">Registry</button>
         </a>
+        
+    <div class="create_2auth">
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="login-btn">Connnect 2-auth</button>
+        </form>
+
+    </div>
 
     </div>
     <div class="error">

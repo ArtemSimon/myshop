@@ -15,4 +15,11 @@ class LoginForm(AuthenticationForm):
 
 class OTPVerificationForm(forms.Form):
     otp = forms.CharField(max_length=6, required=True,label="enter code")
+
+class ConnectAuth(forms.Form):
+    connect_auht = forms.ChoiceField(required=True,
+                                    choices=([True,"Yes"], [False,'No']),
+                                    widget=forms.RadioSelect,
+                                    label='Выберете нужна ли вам двухфакторная аутентификация')
+
     
