@@ -1,0 +1,33 @@
+name: Docker CI
+
+# on:
+#     release:
+#         types: [published]
+
+on:
+    pull_request: 
+        branches: ['main']
+
+
+jobs: 
+    docker_create:
+        runs-on: ubuntu-latest 
+        env:
+            LOGIN: artemsim
+            NAME: docker_ci
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Login in docker
+              run: echo artemA28.04 | docker login -u artemsim --password-stdin
+
+            - name: Build image
+              run: docker build -t artemsim/docker_ci -f Dockerfile .
+              
+            - name: Push image to docker 
+              run: docker push artemsim/docker_ci
+
+
+                
+
+        
