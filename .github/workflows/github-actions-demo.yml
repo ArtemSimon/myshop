@@ -1,0 +1,42 @@
+name: Django CI
+
+on: 
+    push:
+        branches: ['main']
+    pull_request:
+        branches: ['main']
+
+
+jobs: 
+    my_build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                python-version: [ 3.12.3 ]
+        steps:
+            # Actions от github: проверяет репозиторий, гит и т.д.
+            - uses : actions/checkout@v4
+
+            # Устанавливает питон нужной версии (можно в матрице установить несколько версий )
+            - name: Set up Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v3
+              with:
+                python-version: ${{ matrix.python-version }}
+            
+            # Загружает все зависимости с проекта 
+            - name: Install dependens
+              run: | 
+                python -m pip install --upgrade pip 
+                pip install -r requirements.txt
+             
+
+            #  Выполняется скрипт (но можно сделать другую логику)
+            - name: Run a script 
+              run: echo Hello, word 
+              
+            - name: Run two scripts 
+              run: |
+                echo Artem hello in project! 
+
+
+
