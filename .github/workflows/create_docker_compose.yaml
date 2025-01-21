@@ -21,11 +21,11 @@ jobs:
             - name: Login in docker
               run: echo artemA28.04 | docker login -u artemsim --password-stdin
 
-            - name: Build image
-              run: docker build -t artemsim/docker_ci -f Dockerfile .
+            - name: Build docker compose 
+              run:  docker-compose build
               
             - name: Push image to docker 
-              run: docker push artemsim/docker_ci
+              run: docker-compose push artemsim/docker_ci
 
 
                 
