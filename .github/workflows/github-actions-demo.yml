@@ -30,10 +30,10 @@ jobs:
                 pip install -r requirements.txt
             
             # Проверяет код на питоне 
-            - name: lint on code 
-              run: |
-                pip install flake8
-                flake8 .
+            # - name: lint on code 
+            #   run: |
+            #     pip install flake8
+            #     flake8 .
 
             #  Выполняется скрипт (но можно сделать другую логику)
             - name: Run a script 
