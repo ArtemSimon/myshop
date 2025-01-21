@@ -1,12 +1,12 @@
 name: Docker CI
 
-on:
-    release:
-        types: [published]
-
 # on:
-#     pull_request: 
-#         branches: ['main']
+#     release:
+#         types: [published]
+
+on:
+    pull_request: 
+        branches: ['main']
 
 
 jobs: 
