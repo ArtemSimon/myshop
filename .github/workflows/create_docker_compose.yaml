@@ -22,10 +22,10 @@ jobs:
               run: echo artemA28.04 | docker login -u artemsim --password-stdin
 
             - name: Build docker compose 
-              run:  docker-compose build
+              run:  docker compose build
               
             - name: Push image to docker 
-              run: docker-compose push artemsim/docker_ci
+              run: docker compose push artemsim/docker_ci
 
 
                 
