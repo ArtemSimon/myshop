@@ -13,6 +13,7 @@ services:
   #     - pgdb
 
   pgdb:
+    # image: postgres:${APP_DOCKER_TAG:-latest}
     image: postgres
     container_name: pgdb
     environment:
