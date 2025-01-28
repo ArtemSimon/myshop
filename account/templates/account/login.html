@@ -7,6 +7,15 @@
 
 {% block content %}
 
+    <div class="error" style="color: red;text-align: center;font-size: 25px;",>
+        {% if messages %}
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+            
+        {% endif %}
+    </div>
+
 
     <div class="login-container">
         <h2>Вход</h2>
@@ -16,21 +25,21 @@
             <button type="submit" class="login-btn">Войти</button>
         </form>
     </div>
+    
     <div class="button-reg">
         <a href="{% url 'account:signup' %}">
             <button type="submit">Registry</button>
         </a>
         
+    </div>
     <div class="create_2auth">
-        <form method="post" action="">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="login-btn">Connnect 2-auth</button>
-        </form>
+        <a href="{% url 'account:connect_auth' %}">
+            <button type="submit">two_auth_setting</button>
+        </a>
+    </div> 
 
-    </div>
 
-    </div>
+
     <div class="error">
         {% if form.errors %}
             Неверный логин или пароль. Попробуйте снова.

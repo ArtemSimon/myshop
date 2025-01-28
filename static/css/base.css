@@ -394,3 +394,8 @@ body {
     margin-bottom: 15px;
 }
 
+.alert-error {
+    color: red;
+    font-weight: bold;
+  }
+

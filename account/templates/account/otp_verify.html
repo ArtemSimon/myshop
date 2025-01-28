@@ -7,14 +7,24 @@
 
 {% block content %}
 
-<form method='post', action="{% url 'account:otp_verify' %}">
-    {%csrf_token%}
-    {{form.as_p}}
-    <button type='submit' class='login-btn'>Verify OTP</button>
-</form>     
 
-{%if form.errors %}
-    incorrect otp code 
-{%endif%}
+    <form method='post', action="{% url 'account:otp_verify' %}">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type='submit' class='login-btn'>Verify OTP</button>
+    </form>     
+    
+    <div class="error" style="color: red;text-align: center;font-size: 25px;",>
+        {% if messages %}
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+            
+        {% endif %}
+    </div>
+    
+    {%if form.errors %}
+        incorrect otp code 
+    {%endif%}
 
 {%endblock%} 

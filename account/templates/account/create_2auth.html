@@ -1,0 +1,25 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block  title %}
+    Setting two_auth
+{% endblock %}
+
+{%block content%}
+
+
+    <div class="setting_auth">
+        
+        <h1>Setting two auth</h1>
+  
+        <form method='post'>
+            {{form.as_p}}
+            {% csrf_token %}
+            <button type="submit">Post</button>
+        </form>
+        <a href="{%url 'shop:product_list' %}">
+            <button type="submit">Home</button>
+        </a>
+   
+    </div>
+{% endblock %}
