@@ -1,5 +1,4 @@
 import pytest
-import account
 from account.forms import SignUpForm,LoginForm
 from account.views import login_view
 from django.urls import reverse
