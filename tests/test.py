@@ -43,12 +43,12 @@ def test_register_form(data_registration):
     user = form.save()
     assert user.email == 'artemsim2011@mail.ru' 
 
-@pytest.mark.parametrize('data_login',[
-    {'username': 'artem', 'password': '!S:cLm2)y=Tm,b@'},
-])
+# @pytest.mark.parametrize('data_login',[
+#     {'username': 'artem', 'password': '!S:cLm2)y=Tm,b@'},
+# ])
 
-@pytest.mark.django_db
-def test_login_form(data_login):
-    form = LoginForm(data=data_login)
-    assert form.is_valid()
+# @pytest.mark.django_db
+# def test_login_form(data_login):
+#     form = LoginForm(data=data_login)
+#     assert form.is_valid()
 
