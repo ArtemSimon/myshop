@@ -17,3 +17,4 @@ phonenumbers
 pyotp==2.9.0
 whitenoise==6.8.2
 pytest==7.4.4
+pytest-django==4.9.0
