@@ -119,8 +119,8 @@ DATABASES = {
     'NAME': 'myshop',
     'USER': 'artem',
     'PASSWORD': '123',
-    # 'HOST': 'pgdb',
-    'HOST': 'localhost',
+    'HOST': 'pgdb',
+    # 'HOST': 'localhost',
     'PORT': '5432', # default PostgreSQL port
 
     }

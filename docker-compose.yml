@@ -1,16 +1,19 @@
 version: '3.9'
 
 services:
-  # django:
-  #   build: . 
-  #   container_name: django
-  #   command: python manage.py runserver 0.0.0.0:8000
-  #   volumes: 
-  #     - .:/app
-  #   ports:
-  #     - 8000:8000
-  #   depends_on:
-  #     - pgdb
+  django:
+    image: myshop_django:version_2.0
+    container_name: django
+    environment:
+      DB_HOST: pgdb
+      DB_PORT: 5432
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes: 
+      - .:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - pgdb
 
   pgdb:
     # image: postgres:${APP_DOCKER_TAG:-latest}
@@ -21,7 +24,7 @@ services:
       POSTGRES_USER: artem
       POSTGRES_PASSWORD: 123
     ports:
-      - 5432:5432 
+      - 5433:5432 
     volumes: 
       - ./pgdata:/var/lib/postgresql/data
     restart: always    
