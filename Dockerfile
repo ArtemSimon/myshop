@@ -6,7 +6,8 @@ COPY ./ /app
 
 FROM alpine:3.21.2
 RUN apk --no-cache upgrade && \
-    apk --no-cache add tzdata libffi
+    apk --no-cache add tzdata libffi \
+    apk add --no-cache expat
 COPY --from=builder /usr/local/bin/python3 /usr/local/bin/python3
 COPY --from=builder /usr/local/bin/python3.12 /usr/local/bin/python3.12
 COPY --from=builder /usr/local/lib/python3.12 /usr/local/lib/python3.12
