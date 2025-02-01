@@ -56,7 +56,7 @@ jobs:
 
             - name: Install Python 
               uses: actions/setup-python@v3
-              with:
+              with: 
                 python-version: ${{ matrix.python-version }}
 
             - name: Install dependens
@@ -74,7 +74,7 @@ jobs:
                     cd ${{ secrets.PROJECT_FOLDER }}; 
                     git checkout main; 
                     git pull; 
-                    docker compose down ;
+                    docker compose down;
                     docker compose up -d; 
 
           
