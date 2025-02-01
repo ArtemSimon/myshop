@@ -45,37 +45,37 @@ jobs:
             # - name: Run tests
             #   run: pytest tests/test.py
     deploy: 
-      needs: my_ci
-      runs-on: ubuntu:latest
-      strategy: 
-        matrix: 
-          python-version: [3.12.3]
-      steps:
-        - name: Checkout code 
-          uses : actions/checkout@v4
+        needs: my_ci
+        runs-on: ubuntu:latest
+        strategy: 
+          matrix: 
+            python-version: [3.12.3]
+        steps:
+            - name: Checkout code 
+              uses : actions/checkout@v4
 
-        - name: Install Python 
-          uses: actions/setup-python@v3
-          with:
-            python-version: ${{ matrix.python-version }}
+            - name: Install Python 
+              uses: actions/setup-python@v3
+              with:
+                python-version: ${{ matrix.python-version }}
 
-        - name: Install dependens
-          run: | 
-            python -m pip install --upgrade pip 
-            pip install -r requirements.txt
+            - name: Install dependens
+              run: | 
+                python -m pip install --upgrade pip 
+                pip install -r requirements.txt
 
-        - name: Connect on remote server 
-          uses: D3rHase/ssh-command-action@v0.2.2
-          with: 
-            host: ${{ secrets.SSH_HOST }}
-            user: ${{ secrets.SSH_USER}}
-            private_key: ${{ secrets.SSH_PRIVATE_KEY}}
-            command: |
-                cd ${{ secrets.PROJECT_FOLDER }}; 
-                git checkout main; 
-                git pull; 
-                docker compose down ;
-                docker compose up -d; 
+            - name: Connect on remote server 
+              uses: D3rHase/ssh-command-action@v0.2.2
+              with: 
+                host: ${{ secrets.SSH_HOST }}
+                user: ${{ secrets.SSH_USER}}
+                private_key: ${{ secrets.SSH_PRIVATE_KEY}}
+                command: |
+                    cd ${{ secrets.PROJECT_FOLDER }}; 
+                    git checkout main; 
+                    git pull; 
+                    docker compose down ;
+                    docker compose up -d; 
 
           
 
