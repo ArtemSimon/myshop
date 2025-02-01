@@ -44,6 +44,21 @@ jobs:
                 echo Artem hello in project! 
             # - name: Run tests
             #   run: pytest tests/test.py
+    deploy: 
+      needs: my_ci
+      runs-on: ubuntu:latest
+      steps:
+        - name: Checkout code 
+          uses : actions/checkout@v4
+
+        - name: Connect on remote server 
+          uses: D3rHase/ssh-command-action@v0.2.2
+          with: 
+            host: ${{ secrets.SSH_HOST }}
+            user: ${{ secrets.SSH_USER}}
+            private_key: ${{ secrets.SSH_PRIVATE_KEY}}
+        # command: |
+          
 
 
 

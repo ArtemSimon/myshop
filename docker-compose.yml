@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   django:
-    image: myshop_django:version_2.0
+    image: artemsim/docker_ci:version_2.1
     container_name: django
     environment:
       DB_HOST: pgdb
@@ -24,7 +24,7 @@ services:
       POSTGRES_USER: artem
       POSTGRES_PASSWORD: 123
     ports:
-      - 5433:5432 
+      - 5433:5432 # первый порт локальный второй в контейнере 
     volumes: 
       - ./pgdata:/var/lib/postgresql/data
     restart: always    

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-z5yf_n1kt5-*2pftgj)987bg295!url-#cct^ia%d-%b41^hqg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost","127.0.0.1","0.0.0.0"]
+ALLOWED_HOSTS = ["localhost","127.0.0.1","0.0.0.0","31.130.150.168"]
 
 INTERNAL_IPS = [
     # ...
@@ -184,8 +184,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # настроечные параметры Redis
-# REDIS_HOST = 'redis'
-REDIS_HOST = 'localhost'
+REDIS_HOST = 'redis'
+# REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 1 
 

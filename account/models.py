@@ -20,7 +20,7 @@ class UserOTP(models.Model):
     def verify_otp(self,otp) -> bool:
         totp = pyotp.TOTP(self.otp_secret)
         return totp.verify(otp)
-   
+  
     # def create_secret(self):
     #     self.otp_secret = pyotp.random_base32()
     #     return self.otp_secret
