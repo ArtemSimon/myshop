@@ -46,7 +46,7 @@ jobs:
             #   run: pytest tests/test.py
     deploy: 
         needs: my_ci
-        runs-on: ubuntu:latest
+        runs-on: ubuntu-latest
         strategy: 
           matrix: 
             python-version: [3.12.3]
