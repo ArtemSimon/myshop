@@ -19,10 +19,7 @@ services:
     # image: postgres:${APP_DOCKER_TAG:-latest}
     image: postgres
     container_name: pgdb
-    environment:
-      POSTGRES_DB: myshop
-      POSTGRES_USER: artem
-      POSTGRES_PASSWORD: 123
+    env_file: "myshop.env"
     ports:
       - 5433:5432 # первый порт локальный второй в контейнере 
     volumes: 
@@ -43,9 +40,7 @@ services:
     restart: always
     image: rabbitmq:management
     container_name: rabbitmq
-    environment:
-      RABBITMQ_DEFAULT_USER: admin
-      RABBITMQ_DEFAULT_PASS: 123
+    env_file: "myshop.env"
     ports: 
       - 5672:5672
       - 15672:15672
