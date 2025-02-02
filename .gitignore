@@ -2,3 +2,5 @@ __pycache__
 redisdata
 pgdata
 .env
+.myshop_env
+myshop.env
