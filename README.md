@@ -4,11 +4,18 @@
 1. [My Shop Project](#my-shop-project)
 2. [My Page](#my-page)
 3. [Description](#description)
-4. [Install](#install)
+4. [Requirements](#requirements)
+5. [Features](#features)
+6. [Install](#install)
 
 
 ## My page
 [GitHub Page](https://github.com/ArtemSimon)
+
+
+<a href="https://t.me/@Messi3026">
+  <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram">
+</a>
 
 ## Description
 This site was made for friends (not the full version here) for an online shop.
@@ -53,6 +60,3 @@ python manage.py runserver
 python manage.py runserver
 ```
 
-<a href="https://t.me/@Messi3026">
-  <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram">
-</a>
