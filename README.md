@@ -13,6 +13,11 @@
 ## Description
 This site was made for friends (not the full version here) for an online shop.
 
+## Requirements
++ Python 3.10+
++ Django 5.0+
++ Docker 
+
 ### Features
 - [x] Developed the bakend part in Python, the frontend part in JavaScript / HTML / CSS.
 - [x] Configured automatic assembly of the application into a Docker image via CI (GitHub Actions)
@@ -47,3 +52,7 @@ python manage.py runserver
 ```
 python manage.py runserver
 ```
+
+<a href="https://t.me/@Messi3026">
+  <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram">
+</a>
