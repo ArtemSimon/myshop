@@ -24,3 +24,26 @@ This site was made for friends (not the full version here) for an online shop.
 
 
 # Install 
+1. Clone repository
+```
+git clone https://github.com/ArtemSimon/myshop.git
+cd myshop # cd project
+```
+2. Activate venv
+```
+python -m venv venv
+source venv/bin/activate  # Linux/macOS
+venv\Scripts\activate    # Windows
+```
+3. Install requirements
+```
+pip install -r requirements.txt
+```
+4. Apply migrations
+```
+python manage.py runserver
+```
+5. Run server
+```
+python manage.py runserver
+```
